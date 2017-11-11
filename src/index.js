@@ -3,13 +3,9 @@ import Vue from 'vue';
 import axios from 'axios';
 import VueRouter from 'vue-router';
 
-import auth from './auth';
 import {
   App,
-  Home,
-  User,
-  Signup,
-  Login,
+  Home
 } from './components';
 // if you want to use the standard this.$http as you used to do with VueResource
 // I don't like this approach so code uses axion directly though
@@ -42,7 +38,7 @@ axios.defaults.transformResponse = [function (data) {
 Vue.prototype.$http = axios;
 
 // Check the users auth status when the app starts
-auth.checkAuth();
+//auth.checkAuth();
 
 Vue.use(VueRouter);
 
@@ -50,9 +46,9 @@ Vue.use(VueRouter);
 
 const routes = [
   { path: '/home', component: Home },
-  { path: '/users', component: User },
-  { path: '/signup', component: Signup },
-  { path: '/login', component: Login },
+  // { path: '/users', component: User },
+  // { path: '/signup', component: Signup },
+  // { path: '/login', component: Login },
   { path: '*', redirect: '/home' },
 ];
 
