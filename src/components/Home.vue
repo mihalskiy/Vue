@@ -1,10 +1,11 @@
 <!--components/User.vue-->
 <template lang="html">
-  <div >
-    <div v-for="product in products">
+  <div>
+    <input type="text" v-model="search" placeholder="search products">
+    <div v-for="product in filterProducts">
         <h1>{{product.name | to-uppercase}}</h1>
         <img :src="product.image" width="200px" height="400px">
-        <p>{{product.title }}</p>
+        <p>{{product.description | snippet}}</p>
         <p><small>{{product.price}}</small></p>
 
     </div>
@@ -16,7 +17,8 @@
 export default {
   data() {
     return {
-      products: []
+      products: [],
+      search: ''
     }
   },
   methods: {
@@ -27,7 +29,14 @@ export default {
         console.log(item);
         this.products = item.data;
     })
-  }
+  },
+   computed: {
+    filterProducts: function () {
+      return this.products.filter((product) =>{
+        return product.name.match(this.search);
+      })
+    }
+  },
 }
 </script>
 
