@@ -1,7 +1,9 @@
-// import App from './App.vue';
-// import Home from './Home.vue';
+import App from './App.vue';
+import Home from './Home.vue';
+import singleProduct from './singleProduct.vue';
 
-// export {
-//   App,
-//   Home
-// };
+export {
+  App,
+  Home,
+  singleProduct
+};

@@ -42,6 +42,7 @@ module.exports = {
     ],
   },
   plugins: [
+    '~/plugins/vue2-filters'
     // new PurifyCSSPlugin({
     //   minimize: true,
     //   purifyOptions: { info: true, minify: true },

@@ -3,5 +3,5 @@ import singleProduct from './components/singleProduct.vue';
 
 export default [
     {path: '/', component: Home},
-    {path: '/singleProduct', component: singleProduct}
+    {path: '/singleProduct/:id', component: singleProduct}
 ]

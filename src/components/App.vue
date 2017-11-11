@@ -1,7 +1,6 @@
 <template>
   <div>
       <router-view></router-view>
-      
   </div>
 </template>
 
@@ -10,10 +9,10 @@ import Home from './Home.vue';
 import singleProduct from './singleProduct.vue';
 
 export default {
-    components: {
-      'home': Home,
-      'singleProduct': singleProduct
-    },
+    // components: {
+    //   'home': Home,
+    //   'singleProduct': singleProduct
+    // },
     data(){
       return {
 

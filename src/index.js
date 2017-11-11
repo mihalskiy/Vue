@@ -4,6 +4,9 @@ import VueResource from 'vue-resource'
 import axios from 'axios';
 import VueRouter from 'vue-router';
 import Routes from './routes';
+import Vue2Filters from 'vue2-filters'
+
+Vue.use(Vue2Filters)
 
 import App from './components/App.vue'
 
