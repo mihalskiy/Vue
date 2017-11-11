@@ -1,7 +1,7 @@
-import App from './App.vue';
-import Home from './Home.vue';
+// import App from './App.vue';
+// import Home from './Home.vue';
 
-export {
-  App,
-  Home
-};
+// export {
+//   App,
+//   Home
+// };

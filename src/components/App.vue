@@ -1,32 +1,23 @@
 <template>
   <div>
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <ul class="nav navbar-nav">
-          <!-- <li v-if="!user.authenticated"><router-link to="/login">Login</router-link></li>
-          <li v-if="!user.authenticated"><router-link to="/signup">Sign Up</router-link></li>
-          <li v-if="!user.authenticated"><router-link to="/users">Users</router-link></li>
-          <li v-if="user.authenticated" @click="logout()"><router-link to="/login">Logout</router-link></li> -->
-        </ul>
-      </div>
-    </nav>
-    <div class="container">
       <router-view></router-view>
-    </div>
+      
   </div>
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        // user: auth.user,
-      };
+import Home from './Home.vue';
+import singleProduct from './singleProduct.vue';
+
+export default {
+    components: {
+      'home': Home,
+      'singleProduct': singleProduct
     },
-    methods: {
-      // logout() {
-      //   auth.logout();
-      // },
+    data(){
+      return {
+
+      }
     }
-  }
+}
 </script>

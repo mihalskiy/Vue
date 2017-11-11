@@ -1,23 +1,19 @@
 import _ from 'lodash';
 import Vue from 'vue';
+import VueResource from 'vue-resource'
 import axios from 'axios';
 import VueRouter from 'vue-router';
+import Routes from './routes';
 
-import {
-  App,
-  Home
-} from './components';
+import App from './components/App.vue'
 
+// axios.defaults.transformResponse = [function (data) {
+//   // Do whatever you want to transform the data
+//   return JSON.parse(data).data || JSON.parse(data);
+// }];
 
-axios.defaults.transformResponse = [function (data) {
-  // Do whatever you want to transform the data
-  return JSON.parse(data).data || JSON.parse(data);
-}];
+// Vue.prototype.$http = axios;
 
-Vue.prototype.$http = axios;
-
-
-Vue.use(VueRouter);
 
 //filter
 Vue.filter('to-uppercase',(value) => {
@@ -28,19 +24,16 @@ Vue.filter('snippet', (value) => {
   return value.slice(0, 100) + '...';
 })
 
+Vue.use(VueResource);
+Vue.use(VueRouter);
 
-
-const routes = [
-  { path: '/home', component: Home },
-  { path: '*', redirect: '/home' },
-];
-
-export const router = new VueRouter({
-  routes,
+const router = new VueRouter({
+  routes: Routes,
+  mode: 'history'
 });
 
 const app = new Vue({
   el: '#app',
-  router,
   render: h => h(App),
+  router: router
 });
