@@ -42,6 +42,10 @@ Vue.prototype.$http = axios;
 
 Vue.use(VueRouter);
 
+Vue.filter('to-uppercase',(value) => {
+  return  value.toUpperCase()
+})
+
 
 
 const routes = [
