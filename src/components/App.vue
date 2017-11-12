@@ -6,7 +6,7 @@
 
 <script>
 import Home from './Home.vue';
-import singleProduct from './singleProduct.vue';
+import SingleProduct from './SingleProduct.vue';
 
 export default {
     // components: {

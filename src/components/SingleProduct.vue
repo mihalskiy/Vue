@@ -14,9 +14,13 @@ export default {
       }
   },
   created() {
-      this.$http.get('/src/schema/product_list.json' + this.id).then((item)=> {
+      console.log('=++++++++++++++++++++++ single-product')
+      this.$http.get('/src/schema/product_list.json').then((item)=> {
           console.log(item)
-          this.product = item.data
+          console.log(item.data)
+          console.log('-----------------------')
+          console.log(item.data[this.id])
+          this.product = item.data[this.id]
       })
   }
 }

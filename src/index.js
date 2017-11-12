@@ -3,6 +3,7 @@ import VueResource from 'vue-resource';
 import VueRouter from 'vue-router';
 import Routes from './routes';
 import App from './components/App.vue';
+import VuePaginate from 'vue-paginate';
 // import Vue2Filters from 'vue2-filters'
 
 // Vue.use(Vue2Filters)
@@ -21,18 +22,20 @@ Vue.filter('to-uppercase', (value) => {
 });
 
 Vue.filter('snippet', (value) => {
-  return `${value.slice(0, 100)}...` ;
+  return `${value.slice(0, 100)}...`;
 });
 
 Vue.use(VueResource);
 Vue.use(VueRouter);
+Vue.use(VuePaginate);
 
 const router = new VueRouter({
   routes: Routes,
   mode: 'history',
+  saveScrollPosition: true,
 });
 
-const app = new Vue({
+new Vue({
   el: '#app',
   render: h => h(App),
   router,
