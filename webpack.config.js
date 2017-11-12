@@ -42,42 +42,6 @@ module.exports = {
     ],
   },
   plugins: [
-    '~/plugins/vue2-filters'
-    // new PurifyCSSPlugin({
-    //   minimize: true,
-    //   purifyOptions: { info: true, minify: true },
-    //   paths: glob.sync(`${__dirname}/**/*.js`,
-    //     {
-    //       nodir: true,
-    //     }),
-    // }),
-    // new ExtractTextPlugin('[name].[contenthash].css'),
-    // Make sure this is after ExtractTextPlugin!
-    // new PurifyCSSPlugin({
-    //   // Give paths to parse for rules. These should be absolute!
-    //   paths: glob.sync(path.join(__dirname, '/index.html')),
-    // }),
-    // new webpack.LoaderOptionsPlugin({
-    //   minimize: true,
-    //   debug: false,
-    // }),
-    // new webpack.optimize.UglifyJsPlugin({
-    //   compress: {
-    //     warnings: false,
-    //     screw_ie8: true,
-    //     conditionals: true,
-    //     unused: true,
-    //     comparisons: true,
-    //     sequences: true,
-    //     dead_code: true,
-    //     evaluate: true,
-    //     if_return: true,
-    //     join_vars: true,
-    //   },
-    //   output: {
-    //     comments: false,
-    //   },
-    //   sourceMap: true,
-    // }),
+
   ],
 };

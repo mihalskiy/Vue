@@ -2,13 +2,12 @@
 <template lang="html">
   <div>
     <input type="text" v-model="search" placeholder="search products">
-              <button v-on:click="sortPrice()" class="btn btn-danger">Resort Me!</button>
+    <button v-on:click="sortPrice()" class="btn btn-danger">Resort Me!</button>
     <div v-for="product in filterProducts">
         <h1>{{product.name | to-uppercase}}</h1>
         <img :src="product.image" width="200px" height="400px">
         <p>{{product.description | snippet}}</p>
-        <p><small>{{product.price | orderBy 'price'}}</small></p>
-
+        <p><small>{{product.price}}</small></p>
     </div>
 
   </div>
@@ -18,13 +17,12 @@
 export default {
   data() {
     return {
-
       products: [],
       search: ''
     }
   },
   methods: {
-sortedArray: function() {
+    sortedArray: function() {
     function sortPrice(product) {
       console.log('this work');
       if (product.price < product.price)
