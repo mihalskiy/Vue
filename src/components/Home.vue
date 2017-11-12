@@ -1,65 +1,90 @@
 <!--components/Home.vue-->
 <template lang="html">
   <div class="container">
+    <h1>Products list page</h1>
+    <hr>
     <hr>
 
-    <div  class="row ">
+    <div class="row">
+      <h3>Search by product name</h3>
+      <input type="text" v-model="searchQuery" @keyup="searchByProductName" placeholder="search products">
+    </div>
+
+    <hr>
+    <hr>
+
+
+    <div class="row">
+      <h3>Filter by price</h3>
+      <button v-on:click="resetPriceFilter" >reset filter</button>
       <div class="input-group">
-          <span class="input-group-addon">$</span>
-          <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" v-model="minPrice" @change="filterProductsByPrice($event)">
+          <label for="minPrice">minPrice</label>
+          <span class="input-group-addon">UAH</span>
+          <input v-model="minPrice" @keyup="filterProductsByPrice" id="minPrice" type="number" class="form-control" min="0">
+          <div class="clearfix"></div>
       </div>
       <div class="input-group">
-          <span class="input-group-addon">$</span>
-          <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" v-model="maxPrice" @change="filterProductsByPrice($event)">
+          <label for="maxPrice">maxPrice</label>
+          <span class="input-group-addon">UAH</span>
+          <input v-model="maxPrice" @keyup="filterProductsByPrice" id="maxPrice" type="number" class="form-control" min="0">
+           <div class="clearfix"></div>
       </div>
-      <div class="input-group">
-         <select v-model="selected" @change="sortProducts($event)" class="form-control"  name="hero">
-           <option value="" disabled selected>select sort price</option>
-            <option selected value="asc">Sort 1...100 price by ascending</option>
+
+    </div>
+
+    <div class="clearfix"></div>
+
+    <hr>
+    <hr>
+
+    <div class="row">
+     <h3>Sort by price</h3>
+     <div class="input-group">
+         <select v-model="selectedSorting" @change="sortProductsByPrice" class="form-control">
+            <option value="" disabled selected>select sort price</option>
+            <option value="asc">Sort 1...100 price by ascending</option>
             <option value="desc">Sort 100...1 price by descending</option>
-        </select>
+         </select>
+         <div class="clearfix"></div>
       </div>
     </div>
     <hr>
 
     <paginate
-      name="filterProducts"
-      :list="products"
-      :per="4"
+      name="productsListChanged"
+      :list="productsListChanged"
+      :per="3"
     >
-    <div class="row">
-
-<div class="shadow">
-		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 inlineBlock" >
-        <div class="box-customn"  v-for="product in paginated('filterProducts')">
-          <div class="img-wrap-tailor">
-            <a href="#" class="nohover"><img :src="product.image1" alt="product" /></a>
-            <a href="#" class="onhover"><img :src="product.image2" alt="product" /></a>
-            <span> <a :href="'/product/' + product.id">Quick View </a></span>
+      <div class="row">
+          <div class="shadow">
+              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 inlineBlock" >
+                  <div class="box-customn"
+                       v-for="product in paginated('productsListChanged')">
+                      <div class="img-wrap-tailor">
+                          <a href="#" class="nohover"><img :src="product.image1" alt="product" /></a>
+                          <a href="#" class="onhover"><img :src="product.image2" alt="product" /></a>
+                          <span> <a :href="'/product/' + product.id">Quick View </a></span>
+                      </div>
+                      <div class="imfo-area">
+                          <h3> {{product.name | to-uppercase}} </h3>
+                          <p>{{product.description | snippet}}</p>
+                          <h4>{{product.price}}</h4>
+                      </div>
+                  </div>
+              </div>
           </div>
-          <div class="imfo-area">
-            <h3> {{product.name | to-uppercase}} </h3>
-            <p>{{product.description | snippet}}</p>
-            <h4>{{product.price}}</h4>
-          </div>
-        </div>
-		    </div>
-    </div>
-
-</div>
+      </div>
     </paginate>
     <!--THIS IS 'ul > li'-->
     <div class="row">
-    <paginate-links class="pagination col-md-6 col-md-offset-3"
-      for="filterProducts"
-
-      :show-step-links="true"
-
-      :step-links="{
-        next: 'Next',
-        prev: 'Prev'
-      }"
-    ></paginate-links>
+      <paginate-links class="pagination col-md-6 col-md-offset-3"
+        for="productsListChanged"
+        :show-step-links="true"
+        :step-links="{
+          next: 'Next',
+          prev: 'Prev'
+        }"
+      ></paginate-links>
     </div>
   </div>
 </template>
@@ -70,55 +95,71 @@ import _ from 'lodash';
 export default {
   data() {
     return {
-      products: [],
-      search: '',
-      selected: '',
-      paginate: ['filterProducts'],
+      productsList: [],
+      productsListChanged: [],
+      searchQuery: '',
+      selectedSorting: '',
+      paginate: ['productsListChanged'],// npm module vue-paginate
       minPrice: 0,
       maxPrice: 0
     }
   },
   methods: {
-    sortProducts: function(event)  {
-      this.products = _.orderBy(this.products, ['price'], [event.currentTarget.value]);
+    searchByProductName: function() {
+      this.productsListChanged = this.productsList.filter((product) => {
+        const name = product.name.toLowerCase();
+        return name.match(this.searchQuery.toLowerCase());
+      })
     },
+    resetPriceFilter: function() {
+      this.minPrice = 0;
+      const prices = _.map(this.productsListChanged, 'price');
+      this.maxPrice = Math.max(...prices);
+      this.productsListChanged = this.productsList;
+    },
+    sortProductsByPrice: function() {
+      this.productsListChanged = _.orderBy(this.productsList, ['price'], [this.selectedSorting]);
+    },
+    filterProductsByPrice: function () {
+      const minPrice = parseInt(this.minPrice, 10);
+      const maxPrice = parseInt(this.maxPrice, 10);
 
-    filterProductsByPrice: function(event) {
-      
-      var price = event.currentTarget.value;
-      debugger
+      this.productsListChanged = this.productsList.filter((product) => {
+        return (product.price > minPrice) &&
+          (product.price < maxPrice);
+      });
     }
   },
 
   created() {
     this.$http.get('/src/schema/product_list.json').then((item) => {
-        console.log(item);
-        this.products = item.data;
-    })
-  },
-
-   computed: {
-    filterProducts: function () {
-      debugger;
-      console.log('++#@##@@#@#')
-      this.products = this.products.filter((product) =>{
-        return product.name.toLowerCase().match(this.search.toLowerCase());
-      })
-    },
+        this.productsList = item.data;
+        this.productsListChanged = this.productsList;
+        this.resetPriceFilter();
+    });
   },
 }
 </script>
 
 <style lang="css">
 
-.shadow{width:100%; float:left;box-shadow:0 0 10px #000;}
-.img-wrap-tailor a{display:block}
-.img-wrap-tailor{    width: 100%;
+.shadow {
+  width:100%;
+  float:left;
+  box-shadow:0 0 10px #000;
+}
+.img-wrap-tailor a{
+  display:block
+}
+.img-wrap-tailor{
+  width: 100%;
 float: left;
 overflow: hidden;
 height: 300px;
-position: relative;}
-.img-wrap-tailor span{    position: absolute;
+position: relative;
+}
+.img-wrap-tailor span{
+  position: absolute;
 background: #ff6600;
 width: 100%;
 left: 0;
@@ -126,7 +167,8 @@ bottom: 0;
 text-align: center;
 padding: 5px 0;
 font-size: 19px;
-color: #fff;}
+color: #fff;
+}
 .box-customn{    width: 100%;
 float: left;
 border: 1px solid #ccc;

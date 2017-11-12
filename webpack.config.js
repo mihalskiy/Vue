@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const glob = require('glob');
 const path = require('path');
-const PurifyCSSPlugin = require('purifycss-webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 console.log(`BuildPath ${__dirname}/build/`);
 
