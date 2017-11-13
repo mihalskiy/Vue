@@ -1,12 +1,8 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
-import VueRouter from 'vue-router';
-import routes from './routes';
-import App from './components/App.vue';
+import App from './components/app/app.vue';
 import VuePaginate from 'vue-paginate';
-
-import Search from './components/Search.vue';
-
+import store from './store';
 
 // filter
 Vue.filter('to-uppercase', (value) => {
@@ -19,16 +15,9 @@ Vue.filter('snippet', (value) => {
 
 Vue.use(VueResource);
 Vue.use(VuePaginate);
-Vue.use(VueRouter);
-
-const router = new VueRouter({
-  routes,
-  mode: 'history',
-  saveScrollPosition: true,
-});
 
 new Vue({
   el: '#app',
   render: h => h(App),
-  router,
+  store,
 });

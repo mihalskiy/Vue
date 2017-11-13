@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const glob = require('glob');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 console.log(`BuildPath ${__dirname}/build/`);
 
 module.exports = {
@@ -16,7 +17,7 @@ module.exports = {
     filename: 'build.js',
   },
   module: {
-    
+
     rules: [
       // {
       //   test: /\.css$/,
@@ -29,7 +30,7 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
       },
-      
+
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -43,8 +44,7 @@ module.exports = {
     ],
   },
   plugins: [
-  
-  
+
 
   ],
   devServer: {
