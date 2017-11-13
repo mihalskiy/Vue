@@ -7,7 +7,6 @@
 
 <script>
 import Product from './Product.vue';
-import SingleProduct from './SingleProduct.vue';
 import Search from './Search.vue';
 
 
