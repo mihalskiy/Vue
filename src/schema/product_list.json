@@ -51,7 +51,7 @@
         "id":"7",
         "name": "Samsung Galaxy S8 64GB Midnight Black ",
         "description":" Экран (5.8, Super AMOLED, 2960х1440)/ Samsung Exynos 8895 (4 x 2.3 ГГц + 4 x 1.7 ГГц)/ основная камера 12 Мп + фронтальная 8 Мп/ RAM 4 ГБ/ 64 ГБ встроенной памяти + microSD (до 256 ГБ)/ 3G/ LTE/ GPS/ поддержка 2х SIM-карт (Nano-SIM)/ Android 7.0 (Nougat) / 3000 мА*ч Поддерживается установка двух SIM-карт или одной SIM-карты и карты памяти. Слот для второй SIM-карты совмещен со слотом для карты памяти.",
-        "price": 22999,
+        "price": 22,
         "currency": "$",
         "image": "/src/assets/image/store-image-2016-12-26-182235-0-228-panasonic-kxtg3551sxm-cordless-landline-phone-grey-landline-phone.jpg"
     },
@@ -139,7 +139,7 @@
         "id":"18",
         "name": "Lenovo P2 (P2a42) Gold ",
         "description":"Экран (5.5, Super AMOLED, 1920x1080)/ Qualcomm Snapdragon 625 (2.0 ГГц)/ основная камера: 13 Мп, фронтальная камера: 5 Мп/ RAM 4 ГБ/ 32 ГБ встроенной памяти + microSD/SDHC (до 128 ГБ)/ 3G/ LTE/ GPS/ поддержка 2х SIM-карт (Nano-SIM)/ Android 6.0 (Marshmallow) / 5100 мА*ч",
-        "price": 5995,
+        "price": 5,
         "currency": "$",
         "image": "/src/assets/image/store-image-2017-10-29-349947-0-228-texas-instruments-ba-ii-professional-financial-calculator.jpg"
     },
@@ -155,7 +155,7 @@
         "id":"20",
         "name": "Apple iPhone 8 64GB Gold",
         "description":"Экран (4.7, IPS, 1334х750)/ Apple A11 Bionic/ основная камера: 12 Мп, фронтальная камера: 7 Мп/ RAM 2 ГБ/ 64 ГБ встроенной памяти/ 3G/ LTE/ GPS/ Nano-SIM/ iOS 11",
-        "price": 25499,
+        "price": 29,
         "currency": "$",
         "image": "/src/assets/image/store-image-2017-1-22-211820-0-228-motorola-ct202i-corded-landline-phone.jpg"
     }

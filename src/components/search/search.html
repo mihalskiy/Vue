@@ -1,43 +1,41 @@
 <section>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="input-group" id="adv-search">
-        <input type="text" class="form-control" v-model="searchQuery" @keyup="searchByProductName" placeholder="search products" />
-        <div class="input-group-btn">
-          <div class="btn-group" role="group">
-            <div class="dropdown dropdown-lg">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
-              <div class="dropdown-menu dropdown-menu-right" role="menu">
-                <div class="form-horizontal" role="form">
-                  <div class="form-group">
-                    <label for="selectedSorting">Sort by</label>
-                    <select class="form-control" v-model="selectedSorting" @change="sortProductsByPrice" id="selectedSorting">
-                      <option value="0" disabled selected>All Snippets</option>
-                      <option value="asc" selected>Sort 1...100 price by ascending</option>
-                      <option value="desc">Sort 100...1 price by descending</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="minPrice">min-price</label>
-                    <span class="input-group-addon">$</span>
-                    <input class="form-control" v-model="minPrice" required @keyup="filterProductsByPrice" id="minPrice" type="number" min="0"/>
-                  </div>
-                  <div class="form-group">
-                    <label for="maxPrice">max-price</label>
-                    <span class="input-group-addon">$</span>
-                    <input class="form-control" v-model="maxPrice" required @keyup="filterProductsByPrice" id="maxPrice" type="number" min="0" />
-
-                  </div>
-                  <button class="btn-info" v-on:click="resetPriceFilter">reset price</button>
-                  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="input-group" id="adv-search">
+          <input type="text" class="form-control" v-model="searchQuery" @keyup="searchByProductName" placeholder="search products" />
+          <div class="input-group-btn">
+            <div class="btn-group" role="group">
+              <div class="dropdown dropdown-lg">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <form class="form-horizontal">
+                    <div class="form-group">
+                      <label for="selectedSorting">Sort by</label>
+                      <select class="form-control" v-model="selectedSorting" @change="sortProductsByPrice" id="selectedSorting">
+                        <option value="0" disabled selected>All Snippets</option>
+                        <option value="asc" selected>Sort 1...100 price by ascending</option>
+                        <option value="desc">Sort 100...1 price by descending</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="minPrice">min-price</label>
+                      <span class="input-group-addon">$</span>
+                      <input class="form-control" v-model="minPrice" required @keyup="filterProductsByPrice" id="minPrice" type="number" min="0"/>
+                    </div>
+                    <div class="form-group">
+                      <label for="maxPrice">max-price</label>
+                      <span class="input-group-addon">$</span>
+                      <input class="form-control" v-model="maxPrice" required @keyup="filterProductsByPrice" id="maxPrice" type="number" min="0" />
+                    </div>
+                    <button type="button" class="btn-info" v-on:click="resetPriceFilter">reset price</button>
+                  </form>
                 </div>
               </div>
+              <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
             </div>
-            <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
           </div>
         </div>
       </div>
     </div>
-  </div>
-
-</section>
+  
+  </section>
