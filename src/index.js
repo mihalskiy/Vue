@@ -5,6 +5,11 @@ import routes from './routes';
 import App from './components/App.vue';
 import VuePaginate from 'vue-paginate';
 
+import BootstrapVue from 'bootstrap-vue';
+
+
+Vue.use(BootstrapVue);
+
 // filter
 Vue.filter('to-uppercase', (value) => {
   return value.toUpperCase();

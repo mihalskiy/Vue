@@ -10,6 +10,7 @@ import SingleProduct from './SingleProduct.vue';
 
 
 
+
 export default {
     // components: {
     //   'home': Home,

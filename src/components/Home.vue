@@ -4,47 +4,58 @@
     <h1>Products list page</h1>
     <hr>
     <hr>
+	<div class="row">
+		<div class="col-md-12">
+            <div class="input-group" id="adv-search">
+                <input type="text" class="form-control" v-model="searchQuery" @keyup="searchByProductName" placeholder="search products" />
+                <div class="input-group-btn">
+                    <div class="btn-group" role="group">
+                        <div class="dropdown dropdown-lg">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                            <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                <form class="form-horizontal" role="form">
+                                  <div class="form-group">
+                                    <label for="filter">Filter by</label>
+                                    <select class="form-control" v-model="selectedSorting" @change="sortProductsByPrice">
+                                        <!-- <option value="0" disabled selected>All Snippets</option> -->
+                                        <option value="asc" selected>Sort 1...100 price by ascending</option>
+                                        <option value="desc">Sort 100...1 price by descending</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="contain">min-price</label>
+                                    <span class="input-group-addon">UAH</span>
+                                    <input class="form-control" v-model="minPrice" @keyup="filterProductsByPrice" id="minPrice" type="number" min="0"/>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="contain">max-price</label>
+                                    <span class="input-group-addon">UAH</span>
+                                    <input class="form-control" v-model="maxPrice" @keyup="filterProductsByPrice" id="maxPrice" type="number" min="0" />
+                                    
+                                  </div>
+                                  <!-- <button v-on:click="resetPriceFilter" >reset filter</button> -->
+                                  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                </form>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
 
-    <div class="row">
-      <h3>Search by product name</h3>
-      <input type="text" v-model="searchQuery" @keyup="searchByProductName" placeholder="search products">
-    </div>
-
-    <hr>
-    <hr>
-
-
-    <div class="row">
-      <h3>Filter by price</h3>
-      <button v-on:click="resetPriceFilter" >reset filter</button>
-      <div class="input-group">
-          <label for="minPrice">minPrice</label>
-          <span class="input-group-addon">UAH</span>
-          <input v-model="minPrice" @keyup="filterProductsByPrice" id="minPrice" type="number" class="form-control" min="0">
-          <div class="clearfix"></div>
-      </div>
-      <div class="input-group">
-          <label for="maxPrice">maxPrice</label>
-          <span class="input-group-addon">UAH</span>
-          <input v-model="maxPrice" @keyup="filterProductsByPrice" id="maxPrice" type="number" class="form-control" min="0">
-           <div class="clearfix"></div>
-      </div>
-
-    </div>
-
-    <div class="clearfix"></div>
-
-    <hr>
+    
     <hr>
 
     <div class="row">
      <h3>Sort by price</h3>
      <div class="input-group">
-         <select v-model="selectedSorting" @change="sortProductsByPrice" class="form-control">
+         <!-- <select v-model="selectedSorting" @change="sortProductsByPrice" class="form-control">
             <option value="" disabled selected>select sort price</option>
             <option value="asc">Sort 1...100 price by ascending</option>
             <option value="desc">Sort 100...1 price by descending</option>
-         </select>
+         </select> -->
          <div class="clearfix"></div>
       </div>
     </div>
@@ -104,6 +115,7 @@ export default {
       maxPrice: 0
     }
   },
+  
   methods: {
     searchByProductName: function() {
       this.productsListChanged = this.productsList.filter((product) => {
@@ -142,60 +154,44 @@ export default {
 </script>
 
 <style lang="css">
+.dropdown.dropdown-lg .dropdown-menu {
+    margin-top: -1px;
+    padding: 6px 20px;
+}
+.input-group-btn .btn-group {
+    display: flex !important;
+}
+.btn-group .btn {
+    border-radius: 0;
+    margin-left: -1px;
+}
+.btn-group .btn:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.btn-group .form-horizontal .btn[type="submit"] {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.form-horizontal .form-group {
+    margin-left: 0;
+    margin-right: 0;
+}
+.form-group .form-control:last-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
 
-.shadow {
-  width:100%;
-  float:left;
-  box-shadow:0 0 10px #000;
-}
-.img-wrap-tailor a{
-  display:block
-}
-.img-wrap-tailor{
-  width: 100%;
-float: left;
-overflow: hidden;
-height: 300px;
-position: relative;
-}
-.img-wrap-tailor span{
-  position: absolute;
-background: #ff6600;
-width: 100%;
-left: 0;
-bottom: 0;
-text-align: center;
-padding: 5px 0;
-font-size: 19px;
-color: #fff;
-}
-.box-customn{    width: 100%;
-float: left;
-border: 1px solid #ccc;
-margin: 15px 10px;box-shadow:0 0 5px #000;}
-.box-customn .imfo-area{width:100%; float:left;text-align:center;}
-.box-customn .imfo-area h3{    margin: 0px;
-padding: 0px;
-color: #0c0c0c;
-font-size: 21px;
-line-height: 30px;
-font-weight: 600;
-text-transform: uppercase;}
-.box-customn .imfo-area p{margin: 0px;padding:5px 0px;font-size:14px;}
-.box-customn .imfo-area h4{color: #ff0000;
-font-weight: bold;
-line-height: 30px;
-font-size: 25px;}
-.img-wrap-tailor img{max-width:100%;}
-.box-customn a.onhover{display:none;}
-.box-customn:hover a.onhover{display:block;position:absolute;top:0px;left:0px;}
-.box-customn:hover a.nohover{display:none;}
-.inlineBlock {width: 100%; display: inline-flex; margin-right: 15px;}
-.pagination {
-    display: inline-block;
-    padding-left: 0;
-    margin: 20px 0;
-    border-radius: 4px;
-    float: right;
+@media screen and (min-width: 768px) {
+    #adv-search {
+        width: 500px;
+        margin: 0 auto;
+    }
+    .dropdown.dropdown-lg {
+        position: static !important;
+    }
+    .dropdown.dropdown-lg .dropdown-menu {
+        min-width: 500px;
+    }
 }
 </style>

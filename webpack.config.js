@@ -16,6 +16,7 @@ module.exports = {
     filename: 'build.js',
   },
   module: {
+    
     rules: [
       // {
       //   test: /\.css$/,
@@ -28,6 +29,7 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
       },
+      
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -41,6 +43,12 @@ module.exports = {
     ],
   },
   plugins: [
+  
+  
 
   ],
+  devServer: {
+    host: '127.0.0.1',
+    port: 4040,
+  },
 };
