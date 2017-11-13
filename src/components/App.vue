@@ -6,9 +6,9 @@
 </template>
 
 <script>
-import Product from './product.vue';
+import Product from './Product.vue';
 import SingleProduct from './SingleProduct.vue';
-import Search from './search.vue';
+import Search from './Search.vue';
 
 
 

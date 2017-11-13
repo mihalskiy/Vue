@@ -1,4 +1,4 @@
-import Product from './components/product.vue';
+import Product from './components/Product.vue';
 import SingleProduct from './components/SingleProduct.vue';
 
 

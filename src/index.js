@@ -5,7 +5,7 @@ import routes from './routes';
 import App from './components/App.vue';
 import VuePaginate from 'vue-paginate';
 
-import Search from './components/search.vue';
+import Search from './components/Search.vue';
 import BootstrapVue from 'bootstrap-vue';
 
 
