@@ -192,6 +192,19 @@
     border-bottom-left-radius: 4px;
 }
 
+.pagination li {
+    cursor: pointer;
+}
+
+.paginate {
+    display: flex;
+    align-items: center;
+    /* align-content: center; */
+    /* align-self: center; */
+    flex-flow: column;
+    margin-left: 150px;
+}
+
 @media screen and (min-width: 768px) {
     #adv-search {
         width: 500px;
