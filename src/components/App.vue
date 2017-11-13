@@ -1,21 +1,22 @@
 <template>
   <div>
-      <router-view></router-view>
+      <search></search>
+      <product></product>
   </div>
 </template>
 
 <script>
-import Home from './Home.vue';
+import Product from './product.vue';
 import SingleProduct from './SingleProduct.vue';
-
+import Search from './search.vue';
 
 
 
 export default {
-    // components: {
-    //   'home': Home,
-    //   'singleProduct': singleProduct
-    // },
+    components: {
+      'product': Product,
+      'search': Search
+    },
     data(){
       return {
 
