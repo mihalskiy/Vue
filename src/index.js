@@ -6,10 +6,7 @@ import App from './components/App.vue';
 import VuePaginate from 'vue-paginate';
 
 import Search from './components/Search.vue';
-import BootstrapVue from 'bootstrap-vue';
 
-
-Vue.use(BootstrapVue);
 
 // filter
 Vue.filter('to-uppercase', (value) => {
